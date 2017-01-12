@@ -1,0 +1,15 @@
+buildscript{
+	repositories {
+	    	maven { 
+	      		url 'http://dl.bintray.com/jetbrains/intellij-plugin-service' 
+	    	}
+	}
+	
+	dependencies {
+		classpath fileTree(dir:'../gradle-intellij-plugin/build/libs', include: ['*.jar'])
+	}
+}
+
+apply plugin: 'idea'
+apply plugin: 'java'
+apply plugin: 'org.jetbrains.intellij'

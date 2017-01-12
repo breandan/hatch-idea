@@ -1,0 +1,17 @@
+	ext.pluginProjectDir = 'gradle-intellij-plugin'
+	task buildPluginProject(type: GradleBuild){
+		buildFile = pluginProjectDir + '/build.gradle'
+		tasks = ['clean','assemble','publishLocal']
+	}
+	
+	ext.pluginConsumerProjectDir = 'intellij-plugin-consumer'
+	task buildPluginConsumerProject(type: GradleBuild, dependsOn: buildPluginProject){
+		buildFile = pluginConsumerProjectDir + '/build.gradle'
+		tasks = ['clean','runIdea']
+	}
+	
+	task clean(type:Delete){
+		delete "$pluginProjectDir/build", "$pluginConsumerProjectDir/build"
+	}
+	
+	tasks.create('build').dependsOn(buildPluginConsumerProject)
