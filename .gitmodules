@@ -1,0 +1,3 @@
+[submodule "gradle-intellij-plugin"]
+	path = gradle-intellij-plugin
+	url = https://github.com/breandan/gradle-intellij-plugin
